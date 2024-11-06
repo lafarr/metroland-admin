@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articles",
+  "info": {
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "Article",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "FeaturedImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "FeaturedQuote": {
+      "type": "text",
+      "required": true
+    },
+    "Category": {
+      "type": "enumeration",
+      "enum": [
+        "Preview",
+        "Review",
+        "Interview"
+      ],
+      "required": true
+    },
+    "Author": {
+      "type": "enumeration",
+      "enum": [
+        "James LaFarr",
+        "Erin Harkes",
+        "Art the Clown"
+      ],
+      "required": true
+    },
+    "Tags": {
+      "type": "string"
+    },
+    "Content": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}
