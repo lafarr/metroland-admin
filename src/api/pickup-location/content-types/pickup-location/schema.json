@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pickup_locations",
+  "info": {
+    "singularName": "pickup-location",
+    "pluralName": "pickup-locations",
+    "displayName": "Pickup Location"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Address": {
+      "type": "string"
+    },
+    "Type": {
+      "type": "enumeration",
+      "enum": [
+        "Partner",
+        "Stewart's"
+      ]
+    },
+    "Area": {
+      "type": "enumeration",
+      "enum": [
+        "Albany",
+        "Altamont",
+        "Amsterdam",
+        "Averill Park",
+        "Burnt Hills",
+        "Clifton Park",
+        "Cohoes",
+        "Colonie",
+        "Delmar",
+        "Glens Falls",
+        "Gloversville",
+        "Greenwich",
+        "Hudson Falls",
+        "Latham",
+        "Menands",
+        "Queensbury",
+        "Rensselaer",
+        "Saratoga",
+        "Schenectady",
+        "Schuylerville",
+        "Troy",
+        "West Sand Lake",
+        "Watervliet",
+        "Albany County",
+        "Schenectady County",
+        "Rensselaer County",
+        "Saratoga County"
+      ]
+    }
+  }
+}

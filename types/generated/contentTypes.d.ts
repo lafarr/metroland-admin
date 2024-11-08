@@ -1,45 +1,5 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
-export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
-  collectionName: 'articles';
-  info: {
-    singularName: 'article';
-    pluralName: 'articles';
-    displayName: 'Article';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Schema.Attribute.String & Schema.Attribute.Required;
-    FeaturedImage: Schema.Attribute.Media<'images' | 'files'> &
-      Schema.Attribute.Required;
-    FeaturedQuote: Schema.Attribute.Text & Schema.Attribute.Required;
-    Category: Schema.Attribute.Enumeration<['Preview', 'Review', 'Interview']> &
-      Schema.Attribute.Required;
-    Author: Schema.Attribute.Enumeration<
-      ['James LaFarr', 'Erin Harkes', 'Art the Clown']
-    > &
-      Schema.Attribute.Required;
-    Tags: Schema.Attribute.String;
-    Content: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::article.article'
-    > &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Struct.CollectionTypeSchema {
   collectionName: 'files';
   info: {
@@ -535,6 +495,203 @@ export interface PluginUsersPermissionsUser
   };
 }
 
+export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
+  collectionName: 'articles';
+  info: {
+    singularName: 'article';
+    pluralName: 'articles';
+    displayName: 'Article';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Schema.Attribute.String & Schema.Attribute.Required;
+    FeaturedImage: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    FeaturedQuote: Schema.Attribute.Text & Schema.Attribute.Required;
+    Category: Schema.Attribute.Enumeration<['Preview', 'Review', 'Interview']> &
+      Schema.Attribute.Required;
+    Author: Schema.Attribute.Enumeration<
+      ['James LaFarr', 'Erin Harkes', 'Art the Clown']
+    > &
+      Schema.Attribute.Required;
+    Tags: Schema.Attribute.String;
+    Content: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::article.article'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHotSingleHotSingle extends Struct.CollectionTypeSchema {
+  collectionName: 'hot_singles';
+  info: {
+    singularName: 'hot-single';
+    pluralName: 'hot-singles';
+    displayName: 'Hot Single';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Artist: Schema.Attribute.String;
+    Link: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hot-single.hot-single'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHotSingleEntryHotSingleEntry
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'hot_single_entries';
+  info: {
+    singularName: 'hot-single-entry';
+    pluralName: 'hot-single-entries';
+    displayName: 'Hot Single Entry';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Date: Schema.Attribute.Date;
+    hot_single: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::hot-single.hot-single'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hot-single-entry.hot-single-entry'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPickupLocationPickupLocation
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'pickup_locations';
+  info: {
+    singularName: 'pickup-location';
+    pluralName: 'pickup-locations';
+    displayName: 'Pickup Location';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Schema.Attribute.String;
+    Address: Schema.Attribute.String;
+    Type: Schema.Attribute.Enumeration<['Partner', "Stewart's"]>;
+    Area: Schema.Attribute.Enumeration<
+      [
+        'Albany',
+        'Altamont',
+        'Amsterdam',
+        'Averill Park',
+        'Burnt Hills',
+        'Clifton Park',
+        'Cohoes',
+        'Colonie',
+        'Delmar',
+        'Glens Falls',
+        'Gloversville',
+        'Greenwich',
+        'Hudson Falls',
+        'Latham',
+        'Menands',
+        'Queensbury',
+        'Rensselaer',
+        'Saratoga',
+        'Schenectady',
+        'Schuylerville',
+        'Troy',
+        'West Sand Lake',
+        'Watervliet',
+        'Albany County',
+        'Schenectady County',
+        'Rensselaer County',
+        'Saratoga County',
+      ]
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pickup-location.pickup-location'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSocialMediaPostSocialMediaPost
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'social_media_posts';
+  info: {
+    singularName: 'social-media-post';
+    pluralName: 'social-media-posts';
+    displayName: 'Social Media Post';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Thumbnail: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Link: Schema.Attribute.String;
+    Type: Schema.Attribute.Enumeration<['Image', 'Video']>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::social-media-post.social-media-post'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface AdminPermission extends Struct.CollectionTypeSchema {
   collectionName: 'admin_permissions';
   info: {
@@ -907,7 +1064,6 @@ export interface AdminTransferTokenPermission
 declare module '@strapi/strapi' {
   export module Public {
     export interface ContentTypeSchemas {
-      'api::article.article': ApiArticleArticle;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
@@ -918,6 +1074,11 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::article.article': ApiArticleArticle;
+      'api::hot-single.hot-single': ApiHotSingleHotSingle;
+      'api::hot-single-entry.hot-single-entry': ApiHotSingleEntryHotSingleEntry;
+      'api::pickup-location.pickup-location': ApiPickupLocationPickupLocation;
+      'api::social-media-post.social-media-post': ApiSocialMediaPostSocialMediaPost;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;

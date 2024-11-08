@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hot_singles",
+  "info": {
+    "singularName": "hot-single",
+    "pluralName": "hot-singles",
+    "displayName": "Hot Single",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Artist": {
+      "type": "string"
+    },
+    "Link": {
+      "type": "string"
+    }
+  }
+}
